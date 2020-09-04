@@ -62,7 +62,8 @@ extension BookListVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "BookInformationEditVC", bundle: nil)
         let vc = sb.instantiateInitialViewController() as! BookInformationEditVC
-
+        guard let data = storedData?[indexPath.row] else { return }
+        vc.inject(item: data, type: .edit)
         navigationController?.pushViewController(vc, animated: true)
     }
     

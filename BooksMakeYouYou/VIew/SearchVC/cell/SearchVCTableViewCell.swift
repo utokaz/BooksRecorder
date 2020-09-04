@@ -35,7 +35,6 @@ class SearchVCTableViewCell: UITableViewCell {
         self.title.text = title
         self.autor.text = author
     }
-    
 }
 
 extension UITableViewCell {

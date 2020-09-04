@@ -159,12 +159,15 @@
                         <viewLayoutGuide key="safeArea" id="9hI-fV-O2E"/>
                     </view>
                     <connections>
+                        <outlet property="DraggBottomConstraints" destination="frA-HT-bAX" id="gQj-hW-4ZW"/>
+                        <outlet property="DraggTopConstraints" destination="J1l-R4-rXY" id="IOg-aX-tbY"/>
                         <outlet property="authorLabel" destination="4Ra-aT-Ci1" id="dsu-cc-0Xf"/>
                         <outlet property="bookImageView" destination="BuY-4B-160" id="3r7-CN-56z"/>
                         <outlet property="deleteButton" destination="3Dc-mj-22k" id="uYe-8x-FZb"/>
                         <outlet property="descriptionLabel" destination="fOh-Zv-wG0" id="aLX-E4-tOP"/>
                         <outlet property="dragg" destination="if4-I7-Ayr" id="PaH-mp-KfC"/>
                         <outlet property="headerSpace" destination="vLz-Vb-80e" id="Jsw-g6-Qtx"/>
+                        <outlet property="headerSpaceHeightConstrants" destination="5DD-c1-r6U" id="EEy-uN-gKV"/>
                         <outlet property="headerSpaceLabel" destination="QqR-gV-k8C" id="UXQ-ru-OLm"/>
                         <outlet property="memoTextView" destination="vRg-Ub-1Ai" id="lZv-do-Uuh"/>
                         <outlet property="saveButton" destination="rVQ-9I-YsZ" id="9od-Lb-JV8"/>

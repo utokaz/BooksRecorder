@@ -103,7 +103,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "BookInformationEditVC", bundle: nil)
         let vc = sb.instantiateInitialViewController() as! BookInformationEditVC
-        vc.inject(item: items[indexPath.row], type: .register)
+        let model = BookModel.entityToModel(item: items[indexPath.row])
+        vc.inject(item: model, type: .register)
         self.present(vc, animated: true)
     }
     

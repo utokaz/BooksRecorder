@@ -37,7 +37,8 @@ class ScanVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     let sb = UIStoryboard(name: "BookInformationEditVC", bundle: nil)
                     let vc = sb.instantiateInitialViewController() as! BookInformationEditVC
                     vc.delegate = self
-                    vc.inject(item: response.items[0], type: .register)
+                    let model = BookModel.entityToModel(item: response.items[0])
+                    vc.inject(item: model, type: .register)
                     self?.present(vc, animated: true)
                 }
                 

@@ -19,17 +19,7 @@ class BookModel: Object {
     @objc dynamic var memo: String = ""
     @objc dynamic var savedDate: Date?
     
-    func setData(id: String, title: String, authors: List<String>, bookImageUrlStr: String, descriptionStr: String, memo: String, registerDate: Date) {
-        self.id = id
-        self.title = title
-        self.authors = authors
-        self.bookImageUrlStr = bookImageUrlStr
-        self.descriptionStr = descriptionStr
-        self.memo = memo
-        self.savedDate = registerDate
-    }
-    
-    func entityToModel(item: Item) -> BookModel {
+    static func entityToModel(item: Item) -> BookModel {
         let model = BookModel()
         model.id = item.id
         model.title = item.volumeInfo.title ?? ""
@@ -37,10 +27,30 @@ class BookModel: Object {
         item.volumeInfo.authors?.forEach { authors.append($0) }
         model.authors = authors
         model.bookImageUrlStr = item.volumeInfo.imageLinks?.thumbnail ?? ""
+        model.descriptionStr = item.volumeInfo.description ?? ""
         return model
     }
     
+    static func setData(model: BookModel?, memo: String) {
+        let date: Date?
+        let realm = try? Realm()
+        if let storedBook = realm?.object(ofType: BookModel.self, forPrimaryKey: model?.id) {
+            date = storedBook.savedDate
+        } else {
+            date = Date()
+        }
+        
+        try? realm?.write {
+            // データ永続化
+            model?.memo = memo
+            model?.savedDate = date
+            if let model = model {
+                realm?.add(model, update: .modified)
+            }
+        }
+    }
+    
     override static func primaryKey() -> String? {
-      return "id"
+        return "id"
     }
 }

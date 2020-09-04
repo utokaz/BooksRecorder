@@ -34,10 +34,13 @@ class BookInformationEditVC: UIViewController {
     @IBOutlet weak var headerSpace: UIView!
     @IBOutlet weak var headerSpaceLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var DraggTopConstraints: NSLayoutConstraint!
+    @IBOutlet weak var DraggBottomConstraints: NSLayoutConstraint!
+    @IBOutlet weak var headerSpaceHeightConstrants: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     let realm = try? Realm()
-    var item: Item?
+    var item: BookModel?
     weak var delegate: BookInformationEditVCDelegate?
     var type: InfoType?
     
@@ -49,23 +52,7 @@ class BookInformationEditVC: UIViewController {
     
     private func dataBinding() {
         saveButton.rx.tap.asDriver().drive(onNext: { [weak self] in
-            let book = BookModel()
-            let authorList = List<String>()
-            self?.item?.volumeInfo.authors?.forEach { author in
-                authorList.append(author)
-            }
-            let date: Date?
-            if let storedBook = self?.realm?.object(ofType: BookModel.self, forPrimaryKey: self?.item?.id) {
-                date = storedBook.savedDate
-            } else {
-                date = Date()
-            }
-            book.setData(id: (self?.item?.id)!, title: self?.item?.volumeInfo.title ?? "", authors: authorList, bookImageUrlStr: self?.item?.volumeInfo.imageLinks?.thumbnail ?? "", descriptionStr: self?.item?.volumeInfo.description ?? "", memo: self?.memoTextView.text ?? "", registerDate: date!)
-            
-            try? self?.realm?.write {
-                // データ永続化
-                self?.realm?.add(book, update: .modified)
-            }
+            BookModel.setData(model: self?.item, memo: self?.memoTextView.text ?? "")
             self?.view.makeToast("追加されました", duration: 0.5, position: .bottom) { _ in
                 self?.dismiss(animated: true, completion: nil)
             }
@@ -81,14 +68,24 @@ class BookInformationEditVC: UIViewController {
     
     private func uiConfig() {
         guard let book = item else { return }
-        headerSpaceLabel.text = type == InfoType.edit ? "" : "本棚登録"
-        dragg.isHidden = type == InfoType.edit
-        deleteButton.isHidden = type == InfoType.register
         
-        authorLabel.text = book.volumeInfo.authors?.first
-        titleLabel.text = book.volumeInfo.title
-        descriptionLabel.text = book.volumeInfo.description
-        if let urlStr = book.volumeInfo.imageLinks?.thumbnail, let url = URL(string: urlStr) {
+        if type == InfoType.register {
+            saveButton.setTitle("本棚に入れる", for: .normal)
+            headerSpaceLabel.text = "本棚登録"
+            deleteButton.isHidden = true
+        } else {
+            saveButton.setTitle("変更を保存する", for: .normal)
+            headerSpaceLabel.isHidden = true
+            dragg.isHidden = true
+            DraggTopConstraints.constant = 0
+            DraggBottomConstraints.constant = 0
+            headerSpaceHeightConstrants.constant = 0
+        }
+        
+        authorLabel.text = book.authors.first
+        titleLabel.text = book.title
+        descriptionLabel.text = book.descriptionStr
+        if let url = URL(string: book.bookImageUrlStr) {
             bookImageView.kf.indicatorType = .activity
             bookImageView.kf.setImage(with: url)
         } else {
@@ -140,7 +137,7 @@ class BookInformationEditVC: UIViewController {
         }
     }
     
-    public func inject(item: Item, type: InfoType) {
+    public func inject(item: BookModel, type: InfoType) {
         self.item = item
         self.type = type
     }
