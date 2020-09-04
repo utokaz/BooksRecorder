@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultCell" rowHeight="103" id="KGk-i7-Jjw" customClass="SearchVCTableViewCell" customModule="BooksMakeYouYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xPN-7w-cNX">
+                        <rect key="frame" x="10" y="5" width="70" height="93"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xPN-7w-cNX" secondAttribute="height" multiplier="3:4" id="5Bc-RB-jql"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2Gf-rc-Ld9">
+                        <rect key="frame" x="95" y="30" width="220" height="43.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="母なる大地" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDQ-1Y-9FD">
+                                <rect key="frame" x="0.0" y="0.0" width="87" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カート・ヴォネガット" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEL-3b-Bfw">
+                                <rect key="frame" x="0.0" y="25.5" width="153" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="2Gf-rc-Ld9" secondAttribute="trailing" constant="5" id="1fu-L3-nVt"/>
+                    <constraint firstItem="xPN-7w-cNX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="enR-oP-2I4"/>
+                    <constraint firstItem="xPN-7w-cNX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="iAl-Cc-ira"/>
+                    <constraint firstAttribute="bottom" secondItem="xPN-7w-cNX" secondAttribute="bottom" constant="5" id="xxQ-dD-6at"/>
+                    <constraint firstItem="2Gf-rc-Ld9" firstAttribute="leading" secondItem="xPN-7w-cNX" secondAttribute="trailing" constant="15" id="ySC-FR-s5K"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="2Gf-rc-Ld9" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="pdj-7W-hIf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="autor" destination="sEL-3b-Bfw" id="xGL-nM-aDx"/>
+                <outlet property="bookImageView" destination="xPN-7w-cNX" id="QAy-sY-1Kk"/>
+                <outlet property="title" destination="zDQ-1Y-9FD" id="qj2-Se-4gT"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="115.51339285714285"/>
+        </tableViewCell>
+    </objects>
+</document>

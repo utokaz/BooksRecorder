@@ -30,5 +30,12 @@ class BooksMakeYouYouTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testBooksJsonDecode() throws {
+        let jsonDecoder = JSONDecoder()
+        let data = BooksSearchResponse.exampleJson.data(using: .utf8)!
+        let response = try jsonDecoder.decode(BooksSearchResponse.self, from: data)
+        XCTAssertEqual(response.items.first?.volumeInfo.authors.first, "桂歌丸")
+    }
 
 }

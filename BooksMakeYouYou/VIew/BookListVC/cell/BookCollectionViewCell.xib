@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCollectionViewCell" id="gTV-IL-0wX" customClass="BookCollectionViewCell" customModule="BooksMakeYouYou" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="198" height="369"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="198" height="369"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uL-aN-2gp">
+                        <rect key="frame" x="0.0" y="0.0" width="198" height="369"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-XI-tgE">
+                                <rect key="frame" x="15" y="305" width="183" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="437-jb-fFU">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFk-VD-NfI">
+                                        <rect key="frame" x="0.0" y="32" width="183" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="too late_ Photo" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-dx-llI">
+                                <rect key="frame" x="0.0" y="0.0" width="198" height="295"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Pfd-XI-tgE" firstAttribute="top" secondItem="e0b-dx-llI" secondAttribute="bottom" constant="10" id="7Kf-67-tC9"/>
+                            <constraint firstItem="e0b-dx-llI" firstAttribute="top" secondItem="8uL-aN-2gp" secondAttribute="top" id="AdF-a4-6Bq"/>
+                            <constraint firstAttribute="trailing" secondItem="e0b-dx-llI" secondAttribute="trailing" id="BrC-jj-DoU"/>
+                            <constraint firstItem="e0b-dx-llI" firstAttribute="centerX" secondItem="8uL-aN-2gp" secondAttribute="centerX" id="GTQ-E5-T3Z"/>
+                            <constraint firstItem="e0b-dx-llI" firstAttribute="leading" secondItem="8uL-aN-2gp" secondAttribute="leading" id="LTM-mP-uOt"/>
+                            <constraint firstItem="e0b-dx-llI" firstAttribute="height" secondItem="8uL-aN-2gp" secondAttribute="height" multiplier="0.8" id="MA7-47-Bcd"/>
+                            <constraint firstAttribute="bottom" secondItem="Pfd-XI-tgE" secondAttribute="bottom" id="PCJ-fT-Szp"/>
+                            <constraint firstItem="e0b-dx-llI" firstAttribute="width" secondItem="8uL-aN-2gp" secondAttribute="width" id="aSK-52-YsO"/>
+                            <constraint firstItem="Pfd-XI-tgE" firstAttribute="leading" secondItem="8uL-aN-2gp" secondAttribute="leading" constant="15" id="bDc-hX-cib"/>
+                            <constraint firstAttribute="trailing" secondItem="Pfd-XI-tgE" secondAttribute="trailing" id="s2i-ec-9UM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8uL-aN-2gp" secondAttribute="trailing" id="C1b-dT-gFr"/>
+                <constraint firstItem="8uL-aN-2gp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IE5-uh-xli"/>
+                <constraint firstItem="8uL-aN-2gp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SJu-kt-yP0"/>
+                <constraint firstAttribute="bottom" secondItem="8uL-aN-2gp" secondAttribute="bottom" id="q4E-yM-LcX"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="198" height="369"/>
+            <connections>
+                <outlet property="author" destination="XFk-VD-NfI" id="qdG-hW-Umc"/>
+                <outlet property="bookImageView" destination="e0b-dx-llI" id="taa-xr-83w"/>
+                <outlet property="title" destination="437-jb-fFU" id="aLs-AX-XgW"/>
+            </connections>
+            <point key="canvasLocation" x="244.92753623188409" y="240.73660714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="too late_ Photo" width="1280" height="1916"/>
+    </resources>
+</document>
