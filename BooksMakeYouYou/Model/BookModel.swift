@@ -50,6 +50,16 @@ class BookModel: Object {
         }
     }
     
+    static func deleteData(id: String,  completion: @escaping () -> Void) {
+        let realm = try? Realm()
+        if let book = realm?.object(ofType: BookModel.self, forPrimaryKey: id) {
+            try? realm?.write {
+                realm?.delete(book)
+                completion()
+            }
+        }
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }

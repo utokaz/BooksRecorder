@@ -62,13 +62,17 @@ class SearchVC: UIViewController {
     }
     
     private func uiConfig() {
+        title = "検索"
         searchBar.autocapitalizationType = .none
         searchBar.tintColor = UIColor(named: "deepGreen")
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
+        searchBar.placeholder = "タイトルや著者名を入力"
+        
         tableView.register(UINib(nibName: "SearchVCTableViewCell", bundle: nil), forCellReuseIdentifier: "searchResultCell")
         tableView.delegate = self
         tableView.dataSource = self
+        
         let tapped = UITapGestureRecognizer(target: self, action: #selector(closeKeyBoard))
         tapped.cancelsTouchesInView = false
         tableView.addGestureRecognizer(tapped)
@@ -118,6 +122,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchVC: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // 検索小窓が0文字になったらテーブルのセルを消去
         if searchText.count == 0 {

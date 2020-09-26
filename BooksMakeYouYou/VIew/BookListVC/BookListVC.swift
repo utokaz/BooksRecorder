@@ -12,6 +12,7 @@ import Realm
 import RealmSwift
 
 class BookListVC: UIViewController {
+    
     @IBOutlet weak var bookCollectionView: UICollectionView!
     
     let disposeBag = DisposeBag()
@@ -45,6 +46,10 @@ class BookListVC: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 20
         bookCollectionView.collectionViewLayout = layout
+    }
+    
+    func scrollToTop() {
+        bookCollectionView.setContentOffset(CGPoint.zero, animated: true)
     }
 }
 

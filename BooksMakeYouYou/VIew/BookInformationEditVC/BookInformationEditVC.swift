@@ -40,7 +40,7 @@ class BookInformationEditVC: UIViewController {
     
     let disposeBag = DisposeBag()
     let realm = try? Realm()
-    var item: BookModel?
+    var item: BookModel!
     weak var delegate: BookInformationEditVCDelegate?
     var type: InfoType?
     
@@ -53,11 +53,20 @@ class BookInformationEditVC: UIViewController {
     private func dataBinding() {
         saveButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             BookModel.setData(model: self?.item, memo: self?.memoTextView.text ?? "")
-            self?.view.makeToast("追加されました", duration: 0.5, position: .bottom) { _ in
+            self?.view.makeToast(self?.type == InfoType.register ? "追加されました" : "変更しました", duration: 0.2, position: .bottom) { _ in
                 self?.dismiss(animated: true, completion: nil)
             }
         }).disposed(by: disposeBag)
         
+        deleteButton.rx.tap.asDriver().drive(onNext: { [weak self] in
+            BookModel.deleteData(id: self?.item.id ?? "") {
+                self?.view.makeToast("削除しました", duration: 0.2, position: .bottom) { _ in
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        }).disposed(by: disposeBag)
+        
+        // キーボードの監視
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }

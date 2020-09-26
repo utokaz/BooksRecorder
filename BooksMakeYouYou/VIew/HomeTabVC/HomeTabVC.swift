@@ -24,7 +24,9 @@ class HomeTabVC: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if currentIndex == selectedIndex {
-            (viewController as? SearchVC)?.focusSearchBar()
+            let vc = (viewController as? UINavigationController)?.viewControllers.first
+            (vc as? BookListVC)?.scrollToTop()
+            (vc as? SearchVC)?.focusSearchBar()
         }
         currentIndex = selectedIndex
     }

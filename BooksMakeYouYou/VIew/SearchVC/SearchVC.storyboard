@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hrk-pg-ktD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hS7-GC-r58">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ワードで検索-->
+        <!--SearchVC-->
         <scene sceneID="BVG-gr-bt4">
             <objects>
                 <viewController id="Hrk-pg-ktD" customClass="SearchVC" customModule="BooksMakeYouYou" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Ve-nWL">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZnU-OV-Iom">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -24,17 +26,18 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="k62-fy-a9Y"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5N-kW-dc1">
-                                <rect key="frame" x="0.0" y="103" width="414" height="710"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="147" width="414" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Q1g-KE-NmF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Ta-Ve-nWL" firstAttribute="top" secondItem="Q1g-KE-NmF" secondAttribute="top" id="1wZ-j3-kGT"/>
                             <constraint firstItem="Q1g-KE-NmF" firstAttribute="trailing" secondItem="l5N-kW-dc1" secondAttribute="trailing" id="EGN-dt-JDK"/>
@@ -44,9 +47,8 @@
                             <constraint firstItem="6Ta-Ve-nWL" firstAttribute="leading" secondItem="Q1g-KE-NmF" secondAttribute="leading" id="TMj-P1-gNN"/>
                             <constraint firstItem="l5N-kW-dc1" firstAttribute="top" secondItem="6Ta-Ve-nWL" secondAttribute="bottom" constant="15" id="XCJ-yX-fpS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Q1g-KE-NmF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ワードで検索" image="magnifyingglass" catalog="system" id="7TM-eK-Yno"/>
+                    <navigationItem key="navigationItem" id="nXP-N8-u9p"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="ZnU-OV-Iom" id="HjU-ro-xQk"/>
@@ -55,10 +57,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vW-Vx-Lsp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1086.9565217391305" y="-176.11607142857142"/>
+        </scene>
+        <!--ワードで検索-->
+        <scene sceneID="PaP-pl-4D2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hS7-GC-r58" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ワードで検索" image="magnifyingglass" catalog="system" id="7TM-eK-Yno"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uCX-4f-aEc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Hrk-pg-ktD" kind="relationship" relationship="rootViewController" id="QPh-ya-neS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oMv-Mu-7ni" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="176.81159420289856" y="-176.11607142857142"/>
         </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
