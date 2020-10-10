@@ -66,6 +66,7 @@
 		6E51BD7B24FFCEFF000E44C8 /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
 		6E51BD7E2501C168000E44C8 /* Pods_BooksMakeYouYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_BooksMakeYouYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E61630C24F25FFE00E69A3C /* TouchNotifyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchNotifyTableView.swift; sourceTree = "<group>"; };
+		6E635BC92520D21A00F52BB1 /* RxPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6E6652DE24F1FF400063AC6C /* BookInformationEditVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookInformationEditVC.storyboard; sourceTree = "<group>"; };
 		6E6652E024F1FF810063AC6C /* BookInformationEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInformationEditVC.swift; sourceTree = "<group>"; };
 		6EC67C5024ED443400F005A6 /* GoogleBooksAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksAPIRequest.swift; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		6ECFA8F324E6C6B9007F65E7 = {
 			isa = PBXGroup;
 			children = (
+				6E635BC92520D21A00F52BB1 /* RxPlayground.playground */,
 				6ECFA8FE24E6C6B9007F65E7 /* BooksMakeYouYou */,
 				6ECFA91524E6C6BA007F65E7 /* BooksMakeYouYouTests */,
 				6ECFA92024E6C6BA007F65E7 /* BooksMakeYouYouUITests */,
