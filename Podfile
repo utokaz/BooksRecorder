@@ -12,7 +12,7 @@ target 'BooksMakeYouYou' do
     pod 'Kingfisher', '~> 5.0'
     pod 'RealmSwift'
     pod 'Toast-Swift', '~> 5.0.1'
-
+    pod 'SideMenu', '~> 6.0'
   target 'BooksMakeYouYouTests' do
     inherit! :search_paths
     # Pods for testing

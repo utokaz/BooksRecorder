@@ -14,20 +14,23 @@ import RxCocoa
 class SearchVM {
     
     struct input {
-        let triger: PublishRelay<String>
+        let triger: PublishRelay<(String, Int)>
     }
     
     struct output {
         var result: Observable<Result<BooksSearchResponse, Error>>
+        var isLoading: Observable<Bool>
      }
     
     func transform(input: input) -> output {
-        let result = input.triger.flatMapLatest { text -> Observable<Result<BooksSearchResponse, Error>> in
-            let request = SearchBookByKeyword(keyword: text, searchType: .keyword)
+        let result = input.triger.flatMapLatest { trigger -> Observable<Result<BooksSearchResponse, Error>> in
+            let request = SearchBookByKeyword(keyword: trigger.0, startIndex: String(trigger.1))
             let client = BookSearchClient()
             return client.send(request: request)
-        }
+        }.share()
         
-        return output(result: result)
+        let isLoading = Observable.merge(input.triger.asObservable().mapToTrue(), result.mapToFalse()).share()
+        
+        return output(result: result, isLoading: isLoading)
     }
 }

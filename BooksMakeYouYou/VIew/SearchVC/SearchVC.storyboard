@@ -31,28 +31,44 @@
                                     <constraint firstAttribute="height" constant="44" id="k62-fy-a9Y"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5N-kW-dc1">
-                                <rect key="frame" x="0.0" y="147" width="414" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QDG-D3-14r">
+                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ASM-rO-OBS">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ASM-rO-OBS" id="4SL-bz-Bqx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="V51-yR-got">
+                                <rect key="frame" x="197" y="788" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Q1g-KE-NmF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Ta-Ve-nWL" firstAttribute="top" secondItem="Q1g-KE-NmF" secondAttribute="top" id="1wZ-j3-kGT"/>
-                            <constraint firstItem="Q1g-KE-NmF" firstAttribute="trailing" secondItem="l5N-kW-dc1" secondAttribute="trailing" id="EGN-dt-JDK"/>
+                            <constraint firstItem="V51-yR-got" firstAttribute="centerX" secondItem="3Ul-IE-mbZ" secondAttribute="centerX" id="GCc-tb-e9W"/>
                             <constraint firstItem="Q1g-KE-NmF" firstAttribute="trailing" secondItem="6Ta-Ve-nWL" secondAttribute="trailing" id="Gei-8W-i8z"/>
-                            <constraint firstItem="l5N-kW-dc1" firstAttribute="leading" secondItem="Q1g-KE-NmF" secondAttribute="leading" id="M3N-w2-wfO"/>
-                            <constraint firstItem="Q1g-KE-NmF" firstAttribute="bottom" secondItem="l5N-kW-dc1" secondAttribute="bottom" id="OJt-0n-njV"/>
+                            <constraint firstItem="QDG-D3-14r" firstAttribute="leading" secondItem="Q1g-KE-NmF" secondAttribute="leading" id="Hjm-iu-vxP"/>
+                            <constraint firstItem="Q1g-KE-NmF" firstAttribute="bottom" secondItem="QDG-D3-14r" secondAttribute="bottom" id="Jvg-Du-oIW"/>
                             <constraint firstItem="6Ta-Ve-nWL" firstAttribute="leading" secondItem="Q1g-KE-NmF" secondAttribute="leading" id="TMj-P1-gNN"/>
-                            <constraint firstItem="l5N-kW-dc1" firstAttribute="top" secondItem="6Ta-Ve-nWL" secondAttribute="bottom" constant="15" id="XCJ-yX-fpS"/>
+                            <constraint firstItem="V51-yR-got" firstAttribute="bottom" secondItem="QDG-D3-14r" secondAttribute="bottom" constant="-5" id="abO-YG-T5c"/>
+                            <constraint firstItem="Q1g-KE-NmF" firstAttribute="trailing" secondItem="QDG-D3-14r" secondAttribute="trailing" id="jBZ-dS-0XR"/>
+                            <constraint firstItem="QDG-D3-14r" firstAttribute="top" secondItem="6Ta-Ve-nWL" secondAttribute="bottom" id="o38-gw-zUH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nXP-N8-u9p"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="indicatorView" destination="V51-yR-got" id="DSu-8A-3cx"/>
                         <outlet property="searchBar" destination="ZnU-OV-Iom" id="HjU-ro-xQk"/>
-                        <outlet property="tableView" destination="l5N-kW-dc1" id="y5P-6e-VF5"/>
+                        <outlet property="tableView" destination="QDG-D3-14r" id="tEo-7j-pM1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vW-Vx-Lsp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

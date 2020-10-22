@@ -17,7 +17,7 @@ protocol BookInformationEditVCDelegate: class {
     func viewDidDisappear()
 }
 
-class BookInformationEditVC: UIViewController {
+class BookInformationEditVC: BaseVC {
     
     enum InfoType {
         case register
@@ -37,6 +37,7 @@ class BookInformationEditVC: UIViewController {
     @IBOutlet weak var DraggTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var DraggBottomConstraints: NSLayoutConstraint!
     @IBOutlet weak var headerSpaceHeightConstrants: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let disposeBag = DisposeBag()
     let realm = try? Realm()
@@ -50,6 +51,22 @@ class BookInformationEditVC: UIViewController {
         uiConfig()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // キーボードの監視
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: self.view.window)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardDidHideNotification,
+                                                  object: self.view.window)
+    }
+    
     private func dataBinding() {
         saveButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             BookModel.setData(model: self?.item, memo: self?.memoTextView.text ?? "")
@@ -59,16 +76,16 @@ class BookInformationEditVC: UIViewController {
         }).disposed(by: disposeBag)
         
         deleteButton.rx.tap.asDriver().drive(onNext: { [weak self] in
-            BookModel.deleteData(id: self?.item.id ?? "") {
-                self?.view.makeToast("削除しました", duration: 0.2, position: .bottom) { _ in
-                    self?.navigationController?.popViewController(animated: true)
-                }
-            }
+            self?.showDialog(title: "削除してよろしいですか？", message: nil, okAction: {
+                                BookModel.deleteData(id: self?.item.id ?? "") {
+                                    self?.view.makeToast("削除しました", duration: 0.2, position: .bottom) { _ in
+                                        self?.navigationController?.popViewController(animated: true)
+                                    }
+                                } }, cancellAction: nil)
+            
         }).disposed(by: disposeBag)
         
-        // キーボードの監視
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,6 +122,7 @@ class BookInformationEditVC: UIViewController {
         let realm = try? Realm()
         if let storedBook =  realm?.object(ofType: BookModel.self, forPrimaryKey: self.item?.id) {
             memoTextView.text = storedBook.memo
+            saveButton.setTitle("変更する", for: .normal)
         }
         
         dragg.layer.cornerRadius = dragg.frame.height / 2
@@ -132,18 +150,16 @@ class BookInformationEditVC: UIViewController {
     }
     
     @objc
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let suggestionHeight = self.view.frame.origin.y + keyboardSize.height
-            self.view.frame.origin.y -= suggestionHeight
+            scrollView.contentInset.bottom = keyboardSize.height
         }
     }
     
     @objc
-    func keyboardWillHide() {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+    func keyboardWillHide(_ notification: NSNotification) {
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero
     }
     
     public func inject(item: BookModel, type: InfoType) {
@@ -152,5 +168,3 @@ class BookInformationEditVC: UIViewController {
     }
     
 }
-
-

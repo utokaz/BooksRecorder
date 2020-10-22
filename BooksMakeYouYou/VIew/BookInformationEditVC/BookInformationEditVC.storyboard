@@ -173,6 +173,7 @@
                         <outlet property="headerSpaceLabel" destination="QqR-gV-k8C" id="UXQ-ru-OLm"/>
                         <outlet property="memoTextView" destination="vRg-Ub-1Ai" id="lZv-do-Uuh"/>
                         <outlet property="saveButton" destination="rVQ-9I-YsZ" id="9od-Lb-JV8"/>
+                        <outlet property="scrollView" destination="7Z2-L3-kNN" id="Pd8-Zn-s0D"/>
                         <outlet property="titleLabel" destination="Vf9-yE-USV" id="2qY-a7-lwj"/>
                     </connections>
                 </viewController>

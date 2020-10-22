@@ -13,7 +13,7 @@ import RxRelay
 import PKHUD
 import AVFoundation
 
-class ScanVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class ScanVC: BaseVC, AVCaptureMetadataOutputObjectsDelegate {
     
     private let session = AVCaptureSession()
     let scanTrigger = PublishRelay<String>()

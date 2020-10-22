@@ -22,7 +22,7 @@ class ScanVM {
     
     func transform(input: input) -> output {
         let result = input.triger.flatMapLatest { isbm -> Observable<Result<BooksSearchResponse, Error>> in
-            let request = SearchBookByKeyword(keyword: isbm, searchType: .isbn)
+            let request = SearchBookByKeyword(isbn: isbm)
             let client = BookSearchClient()
             return client.send(request: request)
         }

@@ -11,18 +11,11 @@ import Foundation
 class SearchBookByKeyword: GoogleBooksAPIRequest {
     var queryItems: [URLQueryItem]
     
-    init(keyword: String, searchType: SearchType) {
-        switch searchType {
-        case .isbn:
-            self.queryItems = [URLQueryItem(name: "q", value: "isbn:\(keyword)")]
-        case .keyword:
-            self.queryItems = [URLQueryItem(name: "q", value: keyword), URLQueryItem(name: "startIndex", value: "0")]
-        }
-        
+    init(keyword: String, startIndex: String) {
+        self.queryItems = [URLQueryItem(name: "q", value: keyword), URLQueryItem(name: "startIndex", value: startIndex)]
     }
-}
-
-enum SearchType {
-    case isbn
-    case keyword
+    
+    init(isbn: String) {
+        self.queryItems = [URLQueryItem(name: "q", value: "isbn:\(isbn)")]
+    }
 }
