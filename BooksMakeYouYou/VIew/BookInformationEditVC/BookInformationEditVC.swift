@@ -59,6 +59,7 @@ class BookInformationEditVC: BaseVC {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        // 監視解除
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillShowNotification,
                                                   object: self.view.window)

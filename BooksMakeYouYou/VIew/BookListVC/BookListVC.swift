@@ -112,7 +112,7 @@ class BookListVC: BaseVC {
         let sb = UIStoryboard(name: "SideMenuVC", bundle: nil)
         let vc = sb.instantiateInitialViewController() as! SideMenuVC
         let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        leftMenuNavigationController.menuWidth = self.view.frame.width / 2
+        leftMenuNavigationController.menuWidth = self.view.frame.width * 0.7
         leftMenuNavigationController.statusBarEndAlpha = 0
         leftMenuNavigationController.presentationStyle.presentingEndAlpha = 0.8
         SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
@@ -165,7 +165,7 @@ class BookListVC: BaseVC {
         let sb = UIStoryboard(name: "SideMenuVC", bundle: nil)
         let vc = sb.instantiateInitialViewController() as! SideMenuVC
         let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        leftMenuNavigationController.menuWidth = self.view.frame.width / 2
+        leftMenuNavigationController.menuWidth = self.view.frame.width * 0.7
         leftMenuNavigationController.statusBarEndAlpha = 0
         leftMenuNavigationController.leftSide = true
         leftMenuNavigationController.presentationStyle.presentingEndAlpha = 0.8

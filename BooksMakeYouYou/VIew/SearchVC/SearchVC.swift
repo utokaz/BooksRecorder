@@ -80,7 +80,7 @@ class SearchVC: BaseVC {
             .subscribe(onNext: { [weak self] _ in
                 if let text = self?.searchBar.text, text != "" {
                     guard let self = self else { return }
-                    print("reached bottom api execute start")
+                    print("reached bottom and api execution start")
                     self.pageCounter += 1
                     self.searchTrigger.accept((text, self.pageCounter))
                 }
