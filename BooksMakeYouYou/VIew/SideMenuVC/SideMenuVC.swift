@@ -24,10 +24,10 @@ class SideMenuVC: UIViewController {
     
     private func bindingData() {
         backupBtn.rx.tap.subscribe(onNext: {
-            
+            print("backup button tapped")
         }).disposed(by: disposeBag)
         restoreBtn.rx.tap.subscribe(onNext: {
-            
+            print("restore button tapped")
         }).disposed(by: disposeBag)
     }
     
