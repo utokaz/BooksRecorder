@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SideMenuVC: UIViewController {
     
     @IBOutlet weak var backupBtn: UIButton!
     @IBOutlet weak var restoreBtn: UIButton!
-
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         uiConfig()
+        bindingData()
+    }
+    
+    private func bindingData() {
+        backupBtn.rx.tap.subscribe(onNext: {
+            
+        }).disposed(by: disposeBag)
+        restoreBtn.rx.tap.subscribe(onNext: {
+            
+        }).disposed(by: disposeBag)
     }
     
     private func uiConfig() {
